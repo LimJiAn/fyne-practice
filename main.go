@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fyne-practice/utils"
+	"github.com/LimJiAn/fyne-practice/layout"
+	"github.com/LimJiAn/fyne-practice/utils"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/theme"
 )
 
 const (
@@ -14,10 +14,11 @@ const (
 
 func main() {
 	app := app.New()
-	app.Settings().SetTheme(theme.LightTheme()) // if delete, defaultTheme
+	// app.Settings().SetTheme(theme.LightTheme()) // if delete, defaultTheme
 	utils.LogLifecycle(app)
 	win := app.NewWindow(winTitle)
-	// win.SetContent()
+	u := layout.Ui{Win: win}
+	win.SetContent(u.MakeUI(win))
 	win.Resize(fyne.NewSize(400, 800))
 	win.ShowAndRun()
 }
